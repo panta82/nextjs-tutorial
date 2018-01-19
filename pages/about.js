@@ -1,16 +1,10 @@
 import Link from 'next/link';
 
+import Layout from '../components/Layout';
+
 export default () => (
-	<div>
-		<div>
-			<Link href="/">
-				<a>Home</a>
-			</Link>
-			{' | '}
-			<strong>About</strong>
-			<hr />
-		</div>
+	<Layout>
 		<h1>About</h1>
 		<p>This is an about page</p>
-	</div>
+	</Layout>
 );
