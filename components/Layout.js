@@ -1,15 +1,23 @@
 import Header from './Header';
 
-const layoutStyle = {
-	margin: 20,
-	padding: 20
-};
-
 const Layout = ({ url, children }) => {
 	return (
-		<div style={layoutStyle}>
+		<div className="Layout">
 			<Header url={url} />
 			{children}
+			<style jsx>{`
+				.Layout {
+					margin: 20px;
+					padding: 20px;
+				}
+			`}</style>
+			<style jsx global>{`
+				body,
+				html {
+					font-family: 'Arial', sans-serif;
+					background-color: hsl(200, 5%, 95%);
+				}
+			`}</style>
 		</div>
 	);
 };

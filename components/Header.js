@@ -1,10 +1,16 @@
 import Link from 'next/link';
 
-const splitterStyle = {
-	marginLeft: '5px',
-	marginRight: '5px'
-};
-const HeaderSplitter = () => <span style={splitterStyle}>|</span>;
+const HeaderSplitter = () => (
+	<span>
+		|<style jsx>
+			{`
+				span {
+					margin: 0 5px;
+				}
+			`}
+		</style>
+	</span>
+);
 
 const HeaderLink = ({ href, title, url }) => {
 	const current = href === url.pathname;
@@ -18,18 +24,20 @@ const HeaderLink = ({ href, title, url }) => {
 	);
 };
 
-const headerStyle = {
-	background: '#b7d9e3',
-	borderBottom: '2px solid hsl(193.6, 43.9%, 70.4%)',
-	padding: 20
-};
-
 const Header = ({ url }) => {
 	return (
-		<header style={headerStyle}>
+		<header>
 			<HeaderLink href="/" title="Home" url={url} />
 			<HeaderSplitter />
 			<HeaderLink href="/about" title="About" url={url} />
+			<style jsx>{`
+				header {
+					font-family: 'Arial';
+					background: #b7d9e3;
+					border-bottom: 2px solid hsl(193.6, 43.9%, 70.4%);
+					padding: 20px;
+				}
+			`}</style>
 		</header>
 	);
 };

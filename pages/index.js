@@ -27,6 +27,13 @@ const Index = ({ url, shows }) => {
 					</li>
 				))}
 			</ul>
+
+			<style jsx>{`
+				h1,
+				a {
+					font-family: 'Arial';
+				}
+			`}</style>
 		</Layout>
 	);
 };
