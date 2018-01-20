@@ -11,7 +11,11 @@ const HeaderLink = ({ href, title, url }) => {
 	if (current) {
 		return <strong>{title}</strong>;
 	}
-	return <Link href={href}>{title}</Link>;
+	return (
+		<Link href={href}>
+			<a>{title}</a>
+		</Link>
+	);
 };
 
 const headerStyle = {
