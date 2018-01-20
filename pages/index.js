@@ -1,33 +1,42 @@
 import Link from 'next/link';
+import fetch from 'isomorphic-unfetch';
 
 import Layout from '../components/Layout';
 
-const PostLink = ({ id, title }) => {
-	return (
-		<li>
-			<Link as={`/p/${id}`} href={`/post?title=${title}`}>
-				<a>{title}</a>
-			</Link>
-		</li>
-	);
-};
-
-const Index = ({ url }) => {
+const Index = ({ url, shows }) => {
 	return (
 		<Layout url={url}>
-			<h1>NEXT</h1>
-			<p>Hi!</p>
+			<h1>Batman shows</h1>
+			<p>
+				List of batman shows. Based on{' '}
+				<a
+					target="_blank"
+					href="https://learnnextjs.com/basics/fetching-data-for-pages/fetching-batman-shows"
+				>
+					next.js tutorial
+				</a>
+			</p>
 
 			<hr />
-
-			<h3>My blog posts</h3>
 			<ul>
-				<PostLink id="a" title="Blog A" />
-				<PostLink id="b" title="Blog B" />
-				<PostLink id="C" title="Blog C" />
+				{shows.map(({ show }) => (
+					<li key={show.id}>
+						<Link as={`/shows/${show.id}`} href={`/show?id=${show.id}`}>
+							<a>{show.name}</a>
+						</Link>
+					</li>
+				))}
 			</ul>
 		</Layout>
 	);
+};
+
+Index.getInitialProps = () => {
+	return fetch('https://api.tvmaze.com/search/shows?q=batman')
+		.then(res => res.json())
+		.then(shows => {
+			return { shows };
+		});
 };
 
 export default Index;

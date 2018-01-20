@@ -17,9 +17,9 @@ app
 	.then(() => {
 		const server = express();
 
-		server.get('/p/:id', (req, res) => {
-			return app.render(req, res, '/post', {
-				title: req.params.id
+		server.get('/shows/:id', (req, res) => {
+			return app.render(req, res, '/show', {
+				id: req.params.id
 			});
 		});
 
