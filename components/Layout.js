@@ -5,10 +5,10 @@ const layoutStyle = {
 	padding: 20
 };
 
-const Layout = ({ children }) => {
+const Layout = ({ url, children }) => {
 	return (
 		<div style={layoutStyle}>
-			<Header />
+			<Header url={url} />
 			{children}
 		</div>
 	);

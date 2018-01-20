@@ -6,14 +6,26 @@ const splitterStyle = {
 };
 const HeaderSplitter = () => <span style={splitterStyle}>|</span>;
 
-const HeaderLink = ({ url, title }) => <Link href={url}>{title}</Link>;
+const HeaderLink = ({ href, title, url }) => {
+	const current = href === url.pathname;
+	if (current) {
+		return <strong>{title}</strong>;
+	}
+	return <Link href={href}>{title}</Link>;
+};
 
-const Header = () => {
+const headerStyle = {
+	background: '#b7d9e3',
+	borderBottom: '2px solid hsl(193.6, 43.9%, 70.4%)',
+	padding: 20
+};
+
+const Header = ({ url }) => {
 	return (
-		<header>
-			<HeaderLink url="/" title="Home" />
+		<header style={headerStyle}>
+			<HeaderLink href="/" title="Home" url={url} />
 			<HeaderSplitter />
-			<HeaderLink url="/about" title="About" />
+			<HeaderLink href="/about" title="About" url={url} />
 		</header>
 	);
 };
